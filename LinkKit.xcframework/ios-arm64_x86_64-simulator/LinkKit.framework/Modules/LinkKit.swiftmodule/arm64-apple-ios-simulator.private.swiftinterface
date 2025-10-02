@@ -1,6 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target arm64-apple-ios13.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name LinkKit
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios13.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name LinkKit
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import CoreBluetooth
 import Foundation
 @_exported import LinkKit
@@ -50,14 +51,23 @@ public enum LinkResultCode : Swift.String {
     get
   }
 }
-public typealias DismissLinkUIFunction = (() -> Swift.Void)
+public typealias DismissLinkUIFunction = () -> Swift.Void
 @discardableResult
-public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResult) -> Swift.Void)? = nil) -> LinkKit.DismissLinkUIFunction
+public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResult) -> Swift.Void)? = nil, presentationStyle: LinkKit.PresentationStyle) -> LinkKit.DismissLinkUIFunction
 @discardableResult
-public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)? = nil) -> LinkKit.DismissLinkUIFunction
+public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)? = nil, presentationStyle: LinkKit.PresentationStyle) -> LinkKit.DismissLinkUIFunction
+public enum PresentationStyle {
+  case pageSheet
+  case fullScreen
+  public static func == (a: LinkKit.PresentationStyle, b: LinkKit.PresentationStyle) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 open class Handler {
-  public init(linkToken: Swift.String, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
-  public init(linkToken: Swift.String, completionHandler: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)?)
+  public init(linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle = .pageSheet, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
+  public init(linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle = .pageSheet, completionHandler: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)?)
   public func dismiss()
   public func present(from viewController: UIKit.UIViewController)
   @objc deinit
@@ -65,20 +75,22 @@ open class Handler {
 public func linkKitVersion() -> Swift.String
 public struct LinkToken {
 }
-public struct LinkKitSheetModifier : SwiftUI.ViewModifier {
-  public init(isPresented: SwiftUI.Binding<Swift.Bool>, linkToken: Swift.String, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
-  @_Concurrency.MainActor(unsafe) public func body(content: LinkKit.LinkKitSheetModifier.Content) -> some SwiftUI.View
+@_Concurrency.MainActor @preconcurrency public struct LinkKitSheetModifier : SwiftUICore.ViewModifier {
+  @_Concurrency.MainActor @preconcurrency public init(isPresented: SwiftUICore.Binding<Swift.Bool>, linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
+  @_Concurrency.MainActor @preconcurrency public func body(content: LinkKit.LinkKitSheetModifier.Content) -> some SwiftUICore.View
   
   public typealias Body = @_opaqueReturnTypeOf("$s7LinkKit0aB13SheetModifierV4body7contentQr7SwiftUI05_ViewD8_ContentVyACG_tF", 0) __
 }
-extension SwiftUI.View {
-  public func linkKitSheet(isPresented: SwiftUI.Binding<Swift.Bool>, linkToken: Swift.String, completionHandler: @escaping (LinkKit.LinkResult) -> Swift.Void) -> some SwiftUI.View
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func linkKitSheet(isPresented: SwiftUICore.Binding<Swift.Bool>, linkToken: Swift.String, completionHandler: @escaping (LinkKit.LinkResult) -> Swift.Void) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func linkKitFullscreen(isPresented: SwiftUICore.Binding<Swift.Bool>, linkToken: Swift.String, completionHandler: @escaping (LinkKit.LinkResult) -> Swift.Void) -> some SwiftUICore.View
   
 }
-public struct LinkKitSheet : SwiftUI.UIViewControllerRepresentable {
-  public init(linkToken: Swift.String, completionHandler: @escaping (LinkKit.LinkResult) -> Swift.Void)
-  @_Concurrency.MainActor(unsafe) public func makeUIViewController(context: LinkKit.LinkKitSheet.Context) -> UIKit.UIViewController
-  @_Concurrency.MainActor(unsafe) public func updateUIViewController(_ uiViewController: UIKit.UIViewController, context: LinkKit.LinkKitSheet.Context)
+@_Concurrency.MainActor @preconcurrency public struct LinkKitSheet : SwiftUI.UIViewControllerRepresentable {
+  @_Concurrency.MainActor @preconcurrency public init(linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle, completionHandler: @escaping (LinkKit.LinkResult) -> Swift.Void)
+  @_Concurrency.MainActor @preconcurrency public func makeUIViewController(context: LinkKit.LinkKitSheet.Context) -> UIKit.UIViewController
+  @_Concurrency.MainActor @preconcurrency public func updateUIViewController(_ uiViewController: UIKit.UIViewController, context: LinkKit.LinkKitSheet.Context)
   public typealias Body = Swift.Never
   public typealias Coordinator = Swift.Void
   public typealias UIViewControllerType = UIKit.UIViewController
@@ -86,3 +98,7 @@ public struct LinkKitSheet : SwiftUI.UIViewControllerRepresentable {
 extension LinkKit.LinkResultCode : Swift.Equatable {}
 extension LinkKit.LinkResultCode : Swift.Hashable {}
 extension LinkKit.LinkResultCode : Swift.RawRepresentable {}
+extension LinkKit.PresentationStyle : Swift.Equatable {}
+extension LinkKit.PresentationStyle : Swift.Hashable {}
+extension LinkKit.LinkKitSheetModifier : Swift.Sendable {}
+extension LinkKit.LinkKitSheet : Swift.Sendable {}
