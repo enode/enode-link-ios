@@ -1,16 +1,22 @@
 PODS:
-  - EnodeLinkKit (1.0.8)
+  - EnodeLinkKit (1.0.9)
 
 DEPENDENCIES:
-  - EnodeLinkKit (from `../EnodeLinkKit.podspec`)
+  - EnodeLinkKit (from `https://github.com/enode/enode-link-ios.git`, tag `1.0.9`)
 
 EXTERNAL SOURCES:
   EnodeLinkKit:
-    :podspec: "../EnodeLinkKit.podspec"
+    :git: https://github.com/enode/enode-link-ios.git
+    :tag: 1.0.9
+
+CHECKOUT OPTIONS:
+  EnodeLinkKit:
+    :git: https://github.com/enode/enode-link-ios.git
+    :tag: 1.0.9
 
 SPEC CHECKSUMS:
-  EnodeLinkKit: da306a3f82f73605b2e5ecbb1bd5e071a7b64682
+  EnodeLinkKit: 02efb9d9c94507d4e0a7e9f708a5ab47b2933949
 
-PODFILE CHECKSUM: 6481752dfee0a171f35c2eba67cebb5a4e2266e0
+PODFILE CHECKSUM: 58f2952967642b7eda564b7f2672e58bdb4ae994
 
 COCOAPODS: 1.16.2

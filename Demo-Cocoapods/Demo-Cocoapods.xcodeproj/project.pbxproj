@@ -20,6 +20,8 @@
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		036565622F2D1509006E3E0E /* Demo-Cocoapods */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = "Demo-Cocoapods";
 			sourceTree = "<group>";
 		};
@@ -150,13 +152,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Demo-Cocoapods/Pods-Demo-Cocoapods-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Demo-Cocoapods/Pods-Demo-Cocoapods-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
