@@ -98,7 +98,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		GIVE4jPfIhMjKInYPy6LThaNTQ0=
+		3G/hW9mT29zY84wKx/8H0OPeH5Y=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -122,7 +122,7 @@
 		</data>
 		<key>Modules/LinkKit.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		yclBcxlSAavEf/AnR+yowzwzOPA=
+		KQDVLpoLoVCgwlR2R5+uhtr5DtA=
 		</data>
 		<key>Modules/LinkKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
@@ -142,7 +142,7 @@
 		</data>
 		<key>Modules/LinkKit.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		Klx+vpc/nT4H6O9YMNm+7XDWAlo=
+		dYoQZPa5gdbNyRH4k3c1mdlJ/r0=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -395,7 +395,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			eM/mQlxC6Mto7h9EzRsi7pbxfY1LYDLlx65Jv+7T/XY=
+			SCVVnjrAAhy3U4QQDiql5gGETsxDlnmdljKzImQ+/G0=
 			</data>
 		</dict>
 		<key>Modules/LinkKit.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
@@ -430,7 +430,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ndXqmeJ+cGO/GpRpSNUlC6UNSnFH9X2dCuel5yzQMfo=
+			qlDVqBDaoHVgoR3dnHtyE5fQ4HopwuH4GVeFipyEUio=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

@@ -21,7 +21,8 @@ Pod::Spec.new do |spec|
   spec.swift_version  = "5.0"
 
   spec.source         = {
-    :http => "https://github.com/enode/enode-link-ios/releases/download/#{spec.version}/LinkKit.xcframework.zip"
+    :git => "https://github.com/enode/enode-link-ios.git",
+    :tag => spec.version.to_s
   }
 
   spec.ios.vendored_frameworks = "LinkKit.xcframework"
