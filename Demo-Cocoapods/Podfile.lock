@@ -1,18 +1,18 @@
 PODS:
-  - EnodeLinkKit (1.0.9)
+  - EnodeLinkKit (1.0.10)
 
 DEPENDENCIES:
-  - EnodeLinkKit (from `https://github.com/enode/enode-link-ios.git`, tag `1.0.9`)
+  - EnodeLinkKit (from `https://github.com/enode/enode-link-ios.git`, tag `1.0.10`)
 
 EXTERNAL SOURCES:
   EnodeLinkKit:
     :git: https://github.com/enode/enode-link-ios.git
-    :tag: 1.0.9
+    :tag: 1.0.10
 
 CHECKOUT OPTIONS:
   EnodeLinkKit:
     :git: https://github.com/enode/enode-link-ios.git
-    :tag: 1.0.9
+    :tag: 1.0.10
 
 SPEC CHECKSUMS:
   EnodeLinkKit: 02efb9d9c94507d4e0a7e9f708a5ab47b2933949

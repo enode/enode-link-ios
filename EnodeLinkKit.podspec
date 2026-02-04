@@ -1,6 +1,6 @@
 Pod::Spec.new do |spec|
   spec.name           = "EnodeLinkKit"
-  spec.version        = "1.0.9"
+  spec.version        = "1.0.10"
   spec.summary        = "Enode iOS SDK for energy device linking"
 
   spec.description    = <<-DESC
