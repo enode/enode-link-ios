@@ -1,7 +1,7 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-compiler-version: Apple Swift version 6.2.4 effective-5.10 (swiftlang-6.2.4.1.4 clang-1700.6.4.2)
 // swift-module-flags: -target arm64-apple-ios13.1-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name LinkKit
-// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.4
 import CoreBluetooth
 import Foundation
 @_exported import LinkKit
@@ -45,17 +45,23 @@ public enum LinkResultCode : Swift.String {
   case cancelledByUser
   case backendError
   case earlyExitRequestedFromFrontend
+  #if compiler(>=5.3) && $NonescapableTypes
   public init?(rawValue: Swift.String)
+  #endif
   public typealias RawValue = Swift.String
   public var rawValue: Swift.String {
     get
   }
 }
 public typealias DismissLinkUIFunction = () -> Swift.Void
+#if compiler(>=5.3) && $NonescapableTypes
 @discardableResult
 public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResult) -> Swift.Void)? = nil, presentationStyle: LinkKit.PresentationStyle) -> LinkKit.DismissLinkUIFunction
+#endif
+#if compiler(>=5.3) && $NonescapableTypes
 @discardableResult
 public func show(fromViewController: UIKit.UIViewController, linkToken: Swift.String, completion: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)? = nil, presentationStyle: LinkKit.PresentationStyle) -> LinkKit.DismissLinkUIFunction
+#endif
 public enum PresentationStyle {
   case pageSheet
   case fullScreen
@@ -66,8 +72,12 @@ public enum PresentationStyle {
   }
 }
 open class Handler {
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle = .pageSheet, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
   public init(linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle = .pageSheet, completionHandler: ((LinkKit.LinkResultCode, LinkKit.HumanReadableMessage?) -> Swift.Void)?)
+  #endif
   public func dismiss()
   public func present(from viewController: UIKit.UIViewController)
   @objc deinit
@@ -76,7 +86,9 @@ public func linkKitVersion() -> Swift.String
 public struct LinkToken {
 }
 @_Concurrency.MainActor @preconcurrency public struct LinkKitSheetModifier : SwiftUICore.ViewModifier {
+  #if compiler(>=5.3) && $NonescapableTypes
   @_Concurrency.MainActor @preconcurrency public init(isPresented: SwiftUICore.Binding<Swift.Bool>, linkToken: Swift.String, presentationStyle: LinkKit.PresentationStyle, completionHandler: ((LinkKit.LinkResult) -> Swift.Void)?)
+  #endif
   @_Concurrency.MainActor @preconcurrency public func body(content: LinkKit.LinkKitSheetModifier.Content) -> some SwiftUICore.View
   
   public typealias Body = @_opaqueReturnTypeOf("$s7LinkKit0aB13SheetModifierV4body7contentQr7SwiftUI05_ViewD8_ContentVyACG_tF", 0) __
